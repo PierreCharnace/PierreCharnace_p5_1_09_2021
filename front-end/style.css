@@ -1,3 +1,11 @@
 .colorino{
     background-color: rgb(244, 236, 240);
 }
+
+#select-colors{
+    width: 30%;
+}
+
+#select-colors-teddy{
+    width: 50%;
+}
