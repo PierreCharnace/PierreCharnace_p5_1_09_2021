@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="../front-end/style.css" />
         <title>Ours en peluche</title>
+        <script src="../back-end/article.js"></script>
     </head>
     <body>
     <header class="colorino">
@@ -14,7 +15,7 @@
         <div class="row">
             <div class="col">
             <nav class="d-flex navbar navbar-expand-lg navbar-light">
-                <a href="index.html" class="navbar-brand">
+                <a href="../front-end/index.html" class="navbar-brand">
                 <img src="../front-end/images/logo.png" alt="logo orinoco" width="186px">
                 </a>
                 <button
@@ -25,10 +26,10 @@
                 id="navbarContent"
                 class="justify-content-end navbar-nav collapse navbar-collapse">
                 <li class="nav-item active">
-                    <a href="../front-end/index.html#products-list" class="nav-link">Produits</a>
+                    <a href="../front-end/index.html" class="nav-link">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cart.html" class="nav-link">Panier</a>
+                    <a href="cart.html" class="nav-link">Panier<span> 0</span></a>
                 </li>
                 </ul>
             </nav>
@@ -36,60 +37,48 @@
         </div>
         </div>
     </header>
-            <!--***********Confirmation order*************************-->
-    <div aria-live="polite"  aria-atomic="true" class="position-fixed fixed-top mt-5 d-flex justify-content-center align-items-center" style="z-index: 1; min-width: 100%">
-    <div class="toast" role="status" aria-live="polite" aria-atomic="true" data-delay="2000">
-      <div class="toast-header">
-        <strong class="mr-auto">Produit ajouté a votre panier</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body">Produit ajouté au panier.</div>
-    </div>
-  </div>
-
+    <!--*****************teddy-card****************************************-->
     <main class="container">
-        <section class="row px-2 py-2">
-            <div class="card colorino">
-                <img id="image" class="card-img-top object-cover rounded" src="" alt="ours en peluche">
-                <div class="card-body">
-                    <div id="">
-                        <label for="exampleDataList" class="form-label">ours</label>
-                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Choisissez votre couleur">
-                        <datalist id="datalistOptions">
-                          <option value="">
-                          <option value="">
-                          <option value="">
-                          <option value="">
-                          <option value="">
-                        </datalist>
-                    </div>
-                    <div id="name">
-
-                    </div>
-                    <div id="price">
-
-                    </div>
-                    <div id="description">
-
-                    </div>
-                </div>
-            </div>
-        </section> 
-    </main>
+      <section class="row px-2 py-2 my-2">
+          <div class="card colorino col-lg-5 col-md-5 py-2" id="main">
+            <template id="templateArticle">
+              <img class="imageUrl" class=" object-cover" src="" alt="ours en peluche">
+              <div class="card-body">
+                  <select name="teddy colors" class="select-colors-teddy" id="select-colors-teddy" class="rounded bg-white">
+                    <option value="0">Choisissez votre couleur</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                  </select>
+                  <div >
+                    <p class="name h5"></p>
+                  </div>
+                  <div >
+                    <p class="price font-weight-bold"></p>
+                  </div>
+                  <div>
+                    <p class="description"></p>
+                  </div>
+                  <a href="../secondssheets/teddy.html" class="teddy_link" id="teddy_link">
+                  <p class="bg-primary text-dark font-weight-bold border border-dark text-center rounded col-9 col-sm-5 col-md-10 col-lg-6">Ajouter au panier</p>
+                  </a>
+                </template>
+              </div>
+          </div>
+      </section> 
+  </main>
     <footer class="container-fluid colorino">
-        <a href="index.html">
+        <a href="../front-end/index.html">
         <img src="../front-end/images/logo.png" alt="logo orinoco" width="186px">
         </a>
         <div class="row text-center">
           <div class="col">  
-              <p class="text-center">Tous droits résevés - Orinoco</p>
+              <p class="text-center">Tous droits réservés - Orinoco</p>
           </div>
         </div>
 
     </footer>
-
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
