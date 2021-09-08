@@ -1,5 +1,5 @@
 (async function() {
-    //1 - récupération du tableau des ours, await cela veut dire que la fontction va attendre d'avoir récurerer le tableau avant de passer sur le for
+    //1 - récupération du tableau des ours, await cela veut dire que la fontction va attendre d'avoir récuperer le tableau avant de passer sur le for
     const articles = await getArticles()
 
     //2 - on parcours le tableau et on appele la fonction displayArticle pour savoir ou placer les éléments dans ton fichier html

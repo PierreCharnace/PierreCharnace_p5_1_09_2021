@@ -1,22 +1,21 @@
+let carts = document.querySelectorAll(".add-cart");
 
-let carts = document.querySelectorAll('.add-cart');
-
-$.getScript(teddy.js, function(){
-    alert('Le script a bien été chargé.');
-   })
-
-for (let i=0; i < carts.length; i++) {
+for (let i=0; i < carts.length; i++ ) {
     carts[i].addEventListener('click', () => {
-    cartNumbers();
+        cartNumbers();
     })
 }
 
-
 function cartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
-
+    console.log("<***>", productNumbers);
     productNumbers = parseInt(productNumbers);
 
-    localStorage.setItem('cartNumbers', 1);
+    console.log(typeof productNumbers);
+    localStorage.setItem('cartNumbers', 1)
+
+        console.log(productNumbers);
+
 }
+
 
