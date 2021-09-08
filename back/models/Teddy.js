@@ -60,6 +60,7 @@ exports.find = () => {
 }
 
 exports.findById = (id) => {
+  // l'id est envoyé et on parcours le tableau -> teddy._id == id on récupére les données du bon article
   return new Promise((resolve, reject) =>
     resolve(JSON.parse(JSON.stringify(teddies)).find(teddy =>
       teddy._id == id)

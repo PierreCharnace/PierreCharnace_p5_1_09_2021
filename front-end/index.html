@@ -26,7 +26,7 @@
                 id="navbarContent"
                 class="justify-content-end navbar-nav collapse navbar-collapse">
                 <li class="nav-item active">
-                    <a href="../front-end/index.html#products-list" class="nav-link">Produits</a>
+                    <a href="../front-end/index.html" class="nav-link">Produits</a>
                 </li>
                 <li class="nav-item">
                     <a href="../secondssheets/cart.html" class="nav-link">Panier<span> 0</span></a>
@@ -41,16 +41,12 @@
     <main class="container">
         <div class="row px-2 py-2 my-2">
             <div class="card colorino col col-md-5 py-3" id="main">
-              <template id="template-article">
+              <template id="template-article" class="col-6">
                 <img class="imageUrl" class=" object-cover" src="" alt="ours en peluche">
                 <div class="card-body" >  
-                    <select name="teddy colors" class="select-colors-teddy invisible" id="select-colors-teddy" class="rounded bg-white">
-                    </select>
-                    <div >
-                      <p class="name h5"></p>
-                    </div>
-                    <div >
-                      <p class="price font-weight-bold text-danger"></p>
+                    <div class="row">
+                      <p class="name h5 col-9 col-sm-10 col-md-8 col-lg-9"></p>
+                      <p class="price font-weight-bold text-secondary bg-white px-3 border border-secondary"></p>
                     </div>
                     <div>
                       <p class="description"></p>

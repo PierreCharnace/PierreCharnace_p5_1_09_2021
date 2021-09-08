@@ -18,6 +18,7 @@ exports.getAllTeddies = (req, res, next) => {
 };
 
 exports.getOneTeddy = (req, res, next) => {
+  console.log('get one teddy', req.params)
   Teddy.findById(req.params.id).then(
     (teddy) => {
       if (!teddy) {

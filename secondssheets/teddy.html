@@ -40,28 +40,23 @@
     <!--*****************teddy-card****************************************-->
     <main class="container">
       <section class="row px-2 py-2 my-2">
-          <div class="card colorino col-lg-5 col-md-5 py-2" id="main">
+          <div class="card colorino col col-md-6 py-2"  id="main">
             <template id="templateArticle">
               <img class="imageUrl" class=" object-cover" src="" alt="ours en peluche">
               <div class="card-body">
+                  <p class="my-0">Choisissez une couleur</p>
                   <select name="teddy colors" class="select-colors-teddy" id="select-colors-teddy" class="rounded bg-white">
-                    <option value="0">Choisissez votre couleur</option>
-                    <option value="1"></option>
-                    <option value="2"></option>
-                    <option value="3"></option>
-                    <option value="4"></option>
+                    
                   </select>
-                  <div >
-                    <p class="name h5"></p>
-                  </div>
-                  <div >
-                    <p class="price font-weight-bold"></p>
+                  <div class="row">
+                    <p class="name h5 my-3 col-9 col-sm-10 col-md-8 col-lg-9" id="name"></p>
+                    <p class="price my-3 font-weight-bold text-secondary bg-white px-3 border border-secondary"></p>
                   </div>
                   <div>
-                    <p class="description"></p>
+                    <p id="description" class="description"></p>
                   </div>
-                  <a href="../secondssheets/teddy.html" class="teddy_link" id="teddy_link">
-                  <p class="bg-primary text-dark font-weight-bold border border-dark text-center rounded col-9 col-sm-5 col-md-10 col-lg-6">Ajouter au panier</p>
+                  <a href="#" id="teddy_link">
+                  <p class="bg-primary text-dark font-weight-bold border border-dark text-center rounded col-9 col-sm-5 col-md-10 col-lg-8">Ajouter au panier</p>
                   </a>
                 </template>
               </div>
