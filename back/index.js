@@ -38,5 +38,5 @@ function displayArticle(article) {
     cloneElt.querySelector(".description").textContent = article.description
 
     //Display template
-    document.getElementById("main").appendChild(cloneElt)
+    document.querySelector(".main").appendChild(cloneElt)
 }

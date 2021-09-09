@@ -34,7 +34,6 @@ function hydrateArticle(article) {
     // le console.log est ton ami, cela permet de savoir ce qui rentre et sort dans une fonction :)
     // comme nous sommes au début de la fonction, c'est si il rentre 
     //console.log('article ->', article.description) // il entre bien dans la fonction
-
     //on récupére les données de la page html, ceci afin de créer un object qui va recevoir les données issues de l'article
     const templateElt = document.getElementById("templateArticle")
     const cloneElt = document.importNode(templateElt.content, true)
@@ -48,7 +47,9 @@ function hydrateArticle(article) {
     for (let color of article.colors){
         cloneElt.getElementById('select-colors-teddy').innerHTML+=`<option value="1">${color}</option>`
       }//affiche les éléments du tableau
-    document.getElementById("main").appendChild(cloneElt)
+
+
+    document.querySelector(".main").appendChild(cloneElt)
 
     //et ensuite la page se construit avec les éléments
 

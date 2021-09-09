@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../front-end/style.css" />
         <title>Ours en peluche</title>
         <script src="../back/article.js"></script>
-       
+        <script src=""></script>       
     </head>
     <body>
       <!--*****************************footer************************-->
@@ -31,7 +31,7 @@
                     <a href="../front-end/index.html" class="nav-link">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cart.html" class="nav-link">Panier<span> 0</span></a>
+                    <a href="cart.html" class="nav-link">Panier <span> 0</span></a>
                 </li>
                 </ul>
             </nav>
@@ -41,14 +41,12 @@
     </header>
     <!--*****************teddy-card****************************************-->
     <main class="container">
-      <section class="row px-2 py-2 my-2">
-          <div class="card colorino col col-md-6 py-2"  id="main">
-            <template id="templateArticle">
-              <img class="imageUrl" class=" object-cover" src="" alt="ours en peluche">
+      <template id="templateArticle" class="row main">
+          <div class="card colorino col-12 py-3 my-2">
+              <img class="imageUrl"s src="" alt="ours en peluche">
               <div class="card-body">
                   <p class="my-0">Choisissez une couleur</p>
                   <select name="teddy colors" class="select-colors-teddy" id="select-colors-teddy" class="rounded bg-white">
-                    
                   </select>
                   <div class="row">
                     <p class="name h5 my-3 col-9 col-sm-10 col-md-8 col-lg-9" id="name"></p>
@@ -57,13 +55,12 @@
                   <div>
                     <p id="description" class="description"></p>
                   </div>
-                  <button id="teddy_link" class="button add-cart bg-primary font-weight-bold border border-dark text-center- rounded col-9 col-sm-5 col-md-10 col-lg-5">
+                  <button id="teddy_link" type="submit" class="button add-cart bg-primary font-weight-bold border border-dark text-center- rounded col-9 col-sm-5 col-md-10 col-lg-5">
                   Ajouter au panier
                   </button>
-                </template>
               </div>
-          </div>
-      </section> 
+            </div>
+        </template>
   </main>
   <!--****************************footer*******************************-->
     <footer class="container-fluid colorino">
@@ -84,7 +81,7 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-  <script class="y" src="../back/main.js"></script>
+  <script src="../back/main.js"></script>
 
   </body>
 </html>

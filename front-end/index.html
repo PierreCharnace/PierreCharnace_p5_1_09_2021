@@ -29,7 +29,7 @@
                     <a href="../front-end/index.html" class="nav-link">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a href="../secondssheets/cart.html" class="nav-link">Panier<span> 0</span></a>
+                    <a href="../secondssheets/cart.html" class="nav-link">Panier <span> 0</span></a>
                 </li>
                 </ul>
             </nav>
@@ -39,26 +39,23 @@
     </header>
             <!--***********Teddies cards*************************-->
     <main class="container">
-        <div class="row px-2 py-2 my-2">
-            <div class="card colorino col col-md-5 py-3" id="main">
-              <template id="template-article" class="col-6">
+              <template id="template-article" class="row main">
+                <div class="col-11 col-md-5 card colorino p-2 m-2">
                 <img class="imageUrl" class=" object-cover" src="" alt="ours en peluche">
-                <div class="card-body" >  
-                    <div class="row">
-                      <p class="name h5 col-9 col-sm-10 col-md-8 col-lg-9"></p>
-                      <p class="price font-weight-bold text-secondary bg-white px-3 border border-secondary"></p>
-                    </div>
-                    <div>
-                      <p class="description"></p>
-                    </div>
-                    <a href="../secondssheets/teddy.html" id="teddy_link">
-                    <p class="bg-white border border-dark text-center rounded col-9 col-sm-5 col-md-9 col-lg-7">En savoir plus</p>
-                    </a>
+                  <div class="card-body" >  
+                      <div class="row">
+                        <p class="name h5 col-8 col-sm-10 col-md-8 col-lg-9 text-left"></p>
+                        <p class="price font-weight-bold text-secondary bg-white px-3 border border-secondary"></p>
+                      </div>
+                      <div>
+                        <p class="description"></p>
+                      </div>
+                      <a href="../secondssheets/teddy.html" id="teddy_link">
+                        <p class="bg-white border border-dark text-center rounded col-9 col-sm-5 col-md-9 col-lg-7">En savoir plus</p>
+                      </a>
+                  </div>
                 </div>
               </template>
-            </div>
-        </div>
-
     </main>
     
     <footer class="container-fluid colorino">
@@ -79,5 +76,6 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+  <script src="../back/main.js"></script>  
   </body>
 </html>
