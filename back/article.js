@@ -13,7 +13,6 @@ function getArticleId() {
 
 function getArticle(articleId) {
   // console.log('get article -->', articleId)
-
     return fetch(`http://localhost:3000/api/teddies/${articleId}`)
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
@@ -27,6 +26,7 @@ function getArticle(articleId) {
         .catch(function(error) {
             alert(error)
         })
+        
 }
 
 
@@ -54,3 +54,5 @@ function hydrateArticle(article) {
     //et ensuite la page se construit avec les éléments
 
 }
+
+
