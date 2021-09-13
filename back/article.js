@@ -1,10 +1,11 @@
 (async function() {
     //1 on récupère l'id de l'article
-    const articleId =  getArticleId()
+    const articleId =  getArticleId();
     //2 on appel la fonction getArtcile pour récupérer les infos de l'article contenu dans le fichier model
-    const article = await getArticle(articleId)
-    // article retourné, comme il y à un await il attend avant de passer à hydrateArtcile
+    const article = await getArticle(articleId);
+    // article retourné, comme il y à un await il attend avant de passer à hydrateArticle
     hydrateArticle(article)
+
 })()
 
 function getArticleId() {
@@ -23,14 +24,14 @@ function getArticle(articleId) {
 
         //si article ok retour à la ligne 5
 
-        .catch(function(error) {
-            alert(error)
-        })
-        
+        .catch(function() {
+            alert("Erreur de connexion au serveur")
+        })     
 }
 
 
 function hydrateArticle(article) {
+
     // le console.log est ton ami, cela permet de savoir ce qui rentre et sort dans une fonction :)
     // comme nous sommes au début de la fonction, c'est si il rentre 
     //console.log('article ->', article.description) // il entre bien dans la fonction
@@ -43,16 +44,14 @@ function hydrateArticle(article) {
     cloneElt.querySelector(".price").textContent = `${article.price /100} €`
     // cloneElt est un object existant, ensuite on fait correspondre la description avec la description, et ainsi de suite
     cloneElt.getElementById("description").textContent = article.description
-    
+
     for (let color of article.colors){
         cloneElt.getElementById('select-colors-teddy').innerHTML+=`<option value="1">${color}</option>`
-      }//affiche les éléments du tableau
+      }//affiche les couleurs des oursons.
 
 
     document.querySelector(".main").appendChild(cloneElt)
-
     //et ensuite la page se construit avec les éléments
 
+
 }
-
-
