@@ -27,12 +27,13 @@ function getArticles() {
 // 2
 function displayArticle(article) {
     //get template
-    templateElt = document.getElementById("template-article")
+    const templateElt = document.getElementById("template-article")
     //clone template
     const cloneElt = document.importNode(templateElt.content, true)
  
+
     cloneElt.querySelector(".imageUrl").src = article.imageUrl
-    cloneElt.getElementById("teddy_link").href += '?id=' + article._id
+    cloneElt.getElementById("teddy_link").href += `?id=${article._id}`
     cloneElt.querySelector(".name").textContent = article.name
     cloneElt.querySelector(".price").textContent = article.price/100 + " €"
     cloneElt.querySelector(".description").textContent = article.description

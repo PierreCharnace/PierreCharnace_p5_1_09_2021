@@ -1,19 +1,19 @@
 (async function() {
+
     //1 on récupère l'id de l'article
     const articleId =  getArticleId();
     //2 on appel la fonction getArtcile pour récupérer les infos de l'article contenu dans le fichier model
     const article = await getArticle(articleId);
     // article retourné, comme il y à un await il attend avant de passer à hydrateArticle
     hydrateArticle(article)
-
 })()
 
 function getArticleId() {
+
     return new URL(location.href).searchParams.get("id")
 }
 
 function getArticle(articleId) {
-  // console.log('get article -->', articleId)
     return fetch(`http://localhost:3000/api/teddies/${articleId}`)
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
@@ -29,10 +29,9 @@ function getArticle(articleId) {
         })     
 }
 
-
 function hydrateArticle(article) {
 
-    // le console.log est ton ami, cela permet de savoir ce qui rentre et sort dans une fonction :)
+  // le console.log est ton ami, cela permet de savoir ce qui rentre et sort dans une fonction :)
     // comme nous sommes au début de la fonction, c'est si il rentre 
     //console.log('article ->', article.description) // il entre bien dans la fonction
     //on récupére les données de la page html, ceci afin de créer un object qui va recevoir les données issues de l'article
@@ -53,5 +52,18 @@ function hydrateArticle(article) {
     document.querySelector(".main").appendChild(cloneElt)
     //et ensuite la page se construit avec les éléments
 
-
+    return article
+    
 }
+
+/****************************Other method */
+
+
+//méthode slice pour extraire l'id
+
+
+
+// affichage du produit selectionné par l'id
+
+//
+
