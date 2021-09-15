@@ -10,7 +10,7 @@
 
 function getArticleId() {
 
-    return new URL(location.href).searchParams.get("id")
+    return new URL(window.location.href).searchParams.get("id")
 }
 
 function getArticle(articleId) {
@@ -41,29 +41,65 @@ function hydrateArticle(article) {
     cloneElt.querySelector(".name").textContent = article.name
     cloneElt.querySelector(".imageUrl").src = article.imageUrl
     cloneElt.querySelector(".price").textContent = `${article.price /100} €`
-    // cloneElt est un object existant, ensuite on fait correspondre la description avec la description, et ainsi de suite
     cloneElt.getElementById("description").textContent = article.description
-
+    // cloneElt est un object existant, ensuite on fait correspondre la description avec la description, et ainsi de suite
     for (let color of article.colors){
         cloneElt.getElementById('select-colors-teddy').innerHTML+=`<option value="1">${color}</option>`
       }//affiche les couleurs des oursons.
 
-
     document.querySelector(".main").appendChild(cloneElt)
     //et ensuite la page se construit avec les éléments
+    
 
-    return article
+    /*********************cartNumbers****************************** */
+    let carts = document.querySelectorAll(".add-cart");
+
+    for (let i=0; i < carts.length; i++ ) {
+        carts[i].addEventListener('click', () => {
+            cartNumbers();
+
+        });
+
+    }
+
+    function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+
+    if(productNumbers) {
+        document.querySelector('.nav-link span').textContent = productNumbers;
+    }//modifie le nombre dans le panier, dans la balise span
+    }
+
+    function cartNumbers() {
+
+        let productNumbers = localStorage.getItem('cartNumbers');
+        productNumbers = parseInt(productNumbers);
+
+        if(productNumbers ) {        
+            localStorage.setItem('cartNumbers', productNumbers + 1);
+            document.querySelector('.nav-link span').textContent = productNumbers + 1;
+            //ajoute les produits    
+        }   else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.nav-link span').textContent = 1;
+            //met le premier produit
+        }
+    }
+
+
+    onLoadCartNumbers()
+    
+    //***************add teddies on cart******************************** */
+    let i = button_submit.length;
+while (i--)
+      button_submit[i].addEventListener("click", (e) => {
+        e.preventDefault();
+        pricesStorage.push(prices.value);
+        localStorage.setItem("prices", JSON.stringify(pricesStorage));
+        tableBuilder(prices.value);
+        prices.value = "";
+      });
+
     
 }
-
 /****************************Other method */
-
-
-//méthode slice pour extraire l'id
-
-
-
-// affichage du produit selectionné par l'id
-
-//
-

@@ -1,38 +1,6 @@
-let carts = document.querySelectorAll(".add-cart");
-for (let i=0; i < carts.length; i++ ) {
-    carts[i].addEventListener('click', () => {
-        cartNumbers();
 
-    });
 
-   
-}
-
-function onLoadCartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');
-
-    if(productNumbers) {
-        document.querySelector('.nav-link span').textContent = productNumbers;
-    }//modifie le nombre dans le panier, dans la balise span
-}
-
-function cartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');
-    productNumbers = parseInt(productNumbers);
-
-    if(productNumbers ) {        
-        localStorage.setItem('cartNumbers', productNumbers + 1);
-        document.querySelector('.nav-link span').textContent = productNumbers + 1;
-        //ajoute les produits    
-    }   else {
-        localStorage.setItem('cartNumbers', 1);
-        document.querySelector('.nav-link span').textContent = 1;
-        //met le premier produit
-    }
-   
-}
-
-onLoadCartNumbers();//Laisse le nombre total de produit dans le panier
+//Laisse le nombre total de produit dans le panier
 
 //********************************put item selected in localeStorage******************
 
@@ -153,8 +121,8 @@ cartLocal.addEventListener('click', function (add) {                 //Add item 
                 <option value="3">3<option>
             </select>
         </td>
-        <td class="col-1 priceProduct">${document.querySelector(".price")}</td>
-        <td class="col-1 totalPriceProduct">${document.querySelector(".price")}</td>
+        <td class="col-1 priceProduct" id="price-product"></td>
+        <td class="col-1 totalPriceProduct" id="total-price-product">${document.querySelector(".price")}</td>
         <td class="col-1 removeProduct text-center text-danger">X</td>
     </tr>`
     }console.log("--->",localStorageArticle);

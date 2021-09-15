@@ -9,6 +9,8 @@
         <title>Ours en peluche</title>
         
         <script src="../back/article.js"></script>
+        <script src="../back/cart.js"></script>
+
     </head>
     <body>
       <!--*****************************header************************-->
@@ -48,15 +50,16 @@
                   <label for="teddy_colors ">Choisissez une couleur</label>
                   <select name="teddy_colors" class="select-colors-teddy" id="select-colors-teddy" class="rounded bg-white">
                   </select>
-                  <div class="row">
-                    <p class="name h5 my-3 col-9 col-sm-10 col-md-8 col-lg-9" id="name">o</p>
+                <div class="row storage" id="storage">
+                    <p class=" h5 my-3 col-9 col-sm-10 col-md-8 col-lg-9" id="name"><span class="name"></span></p>
                     <p class="price my-3 font-weight-bold text-secondary bg-white px-3 border border-secondary"></p>
-                  </div>
+                  
+                </div>
                   <div>
                     <p id="description" class="description"></p>
                   </div>
-                  <button id="teddy_link" type="submit" class="button add-cart bg-primary font-weight-bold border border-dark text-center- rounded col-9 col-sm-5 col-md-10 col-lg-5">
-                  Ajouter au panier
+                  <button id="button-submit" class="button-submit  button add-cart bg-primary font-weight-bold border border-dark text-center- rounded col-9 col-sm-5 col-md-10 col-lg-5">
+                    Ajouter au panier
                   </button>
               </div>
             </div>
