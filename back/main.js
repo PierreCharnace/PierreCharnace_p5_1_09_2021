@@ -1,5 +1,30 @@
 
 
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem('cartNumbers');
+
+    if(productNumbers) {
+        document.querySelector('.nav-link span').textContent = productNumbers;
+    }//modifie le nombre dans le panier, dans la balise span
+    }
+
+    function cartNumbers() {
+
+        let productNumbers = localStorage.getItem('cartNumbers');
+        productNumbers = parseInt(productNumbers);
+
+        if(productNumbers ) {        
+            localStorage.setItem('cartNumbers', productNumbers + 1);
+            document.querySelector('.nav-link span').textContent = productNumbers + 1;
+            //ajoute les produits    
+        }   else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.nav-link span').textContent = 1;
+            //met le premier produit
+        }
+}
+onLoadCartNumbers()
+
 //Laisse le nombre total de produit dans le panier
 
 //********************************put item selected in localeStorage******************

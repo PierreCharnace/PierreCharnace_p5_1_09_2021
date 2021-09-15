@@ -8,7 +8,6 @@
     }
 })()
 
-
 //1
 function getArticles() {
     return fetch("http://localhost:3000/api/teddies")
@@ -31,13 +30,11 @@ function displayArticle(article) {
     //clone template
     const cloneElt = document.importNode(templateElt.content, true)
  
-
     cloneElt.querySelector(".imageUrl").src = article.imageUrl
     cloneElt.getElementById("teddy_link").href += `?id=${article._id}`
     cloneElt.querySelector(".name").textContent = article.name
     cloneElt.querySelector(".price").textContent = article.price/100 + " €"
     cloneElt.querySelector(".description").textContent = article.description
-
     //Display template
     document.querySelector(".main").appendChild(cloneElt)
 }

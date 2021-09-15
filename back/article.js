@@ -31,10 +31,6 @@ function getArticle(articleId) {
 
 function hydrateArticle(article) {
 
-  // le console.log est ton ami, cela permet de savoir ce qui rentre et sort dans une fonction :)
-    // comme nous sommes au début de la fonction, c'est si il rentre 
-    //console.log('article ->', article.description) // il entre bien dans la fonction
-    //on récupére les données de la page html, ceci afin de créer un object qui va recevoir les données issues de l'article
     const templateElt = document.getElementById("templateArticle")
     const cloneElt = document.importNode(templateElt.content, true)
 
@@ -50,56 +46,29 @@ function hydrateArticle(article) {
     document.querySelector(".main").appendChild(cloneElt)
     //et ensuite la page se construit avec les éléments
     
-
     /*********************cartNumbers****************************** */
+      
     let carts = document.querySelectorAll(".add-cart");
 
     for (let i=0; i < carts.length; i++ ) {
         carts[i].addEventListener('click', () => {
             cartNumbers();
-
+    
         });
-
+    
     }
-
-    function onLoadCartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');
-
-    if(productNumbers) {
-        document.querySelector('.nav-link span').textContent = productNumbers;
-    }//modifie le nombre dans le panier, dans la balise span
-    }
-
-    function cartNumbers() {
-
-        let productNumbers = localStorage.getItem('cartNumbers');
-        productNumbers = parseInt(productNumbers);
-
-        if(productNumbers ) {        
-            localStorage.setItem('cartNumbers', productNumbers + 1);
-            document.querySelector('.nav-link span').textContent = productNumbers + 1;
-            //ajoute les produits    
-        }   else {
-            localStorage.setItem('cartNumbers', 1);
-            document.querySelector('.nav-link span').textContent = 1;
-            //met le premier produit
-        }
-    }
-
-
-    onLoadCartNumbers()
     
     //***************add teddies on cart******************************** */
-    let i = button_submit.length;
-while (i--)
-      button_submit[i].addEventListener("click", (e) => {
-        e.preventDefault();
-        pricesStorage.push(prices.value);
-        localStorage.setItem("prices", JSON.stringify(pricesStorage));
-        tableBuilder(prices.value);
-        prices.value = "";
-      });
+    const button_submit = document.getElementsByClassName("button-submit");
 
-    
+    let i = button_submit.length;
+    while (i--)
+        button_submit[i].addEventListener("click", (e) => {
+            e.preventDefault();
+            pricesStorage.push(prices.value);
+            localStorage.setItem("prices", JSON.stringify(pricesStorage));
+            tableBuilder(prices.value);
+            prices.value = "";
+        });   
 }
-/****************************Other method */
+
