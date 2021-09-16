@@ -1,17 +1,15 @@
 (async function() {
-
-    //1 on récupère l'id de l'article
+    //1 collect ID from article
     const articleId =  getArticleId();
-    //2 on appel la fonction getArtcile pour récupérer les infos de l'article contenu dans le fichier model
+    //2 call fonction getArticle to collected info in localHost
     const article = await getArticle(articleId);
-    // article retourné, comme il y à un await il attend avant de passer à hydrateArticle
+    // article is returned , because await is waiting before hydrateArticle.
     articleCart(article)
 })()
 
 function getArticleId() {
-
     return new URL(window.location.href).searchParams.get("id")
-}
+}//get the id in url
 
 function getArticle(articleId) {
     return fetch(`http://localhost:3000/api/teddies/${articleId}`)
@@ -22,7 +20,7 @@ function getArticle(articleId) {
             return article
         })
 
-        //si article ok retour à la ligne 5
+        //if article is ok return to begining
 
         .catch(function() {
             alert("Erreur de connexion au serveur")
@@ -31,34 +29,47 @@ function getArticle(articleId) {
 
 function articleCart(article) {
 
-  let articleregisteredlocal = JSON.parse(localStorage.getItem("article"));
-
-  if(articleregisteredlocal){
-
-
-  } else {
-
-    articleregisteredlocal = [];
-
-  };
-
   const sendToCart = document.querySelectorAll("#button-submit");
-  let item = sendToCart.length;
+  let item = sendToCart.length;//loop for addEventListener
+  
+  //translate teddyArticle language JSON to JS
+  let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));
 
-  console.log(sendToCart);
+  //PopUpConfirmation for put article in localStorage
+  const popUpConfirmation = () => {
+    if(window.confirm(`L'article ${article.name} a bien été ajouter au panier 
+Continuer vos achats OK ou payer vos produits ANNULER`)){
+    window.location.href  = "../front-end/index.html"
+    } else{
+      window.location.href = "cart.html"
+    }
+  }
+  
+  const addArticleInLocalStorage = () => {//add article to array from LocalStorage and   //translate teddyArticle language JS to JSON
 
+        articleRegisteredLocal.push(article);
+        localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
+  }
+  
+  /**************************************************** */
   while(item--)
     sendToCart[item].addEventListener("click", (e) => {
       e.preventDefault();
-      //objet ourson pour le manier et le local storage
-      let articleArray = {
-        article_Name : article.name,
-        article_Quantity : 1,
-        article_Price : article.price / 100,
-        article_Id : article._id,
-      }
-      console.log( articleArray);
+
+      if(articleRegisteredLocal){//put more articles in localStorage
+        addArticleInLocalStorage();
+        popUpConfirmation();
+    
+      } else {//put the first article in localStorage
+        articleRegisteredLocal = [];
+        addArticleInLocalStorage();
+        popUpConfirmation();
+      };
     });
+  
+ 
+   
+
 
 
 

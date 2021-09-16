@@ -54,7 +54,7 @@ function hydrateArticle(article) {
     for (let i=0; i < carts.length; i++ ) {
         carts[i].addEventListener('click', () => {
             cartNumbers();
-    
+ 
         });
     
     }
