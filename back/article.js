@@ -14,6 +14,7 @@ function getArticleId() {
 }
 
 function getArticle(articleId) {
+
     return fetch(`http://localhost:3000/api/teddies/${articleId}`)
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
@@ -59,7 +60,7 @@ function hydrateArticle(article) {
     }
     
     //***************add teddies on cart******************************** */
-    const button_submit = document.getElementsByClassName("button-submit");
+   /* const button_submit = document.getElementsByClassName("button-submit");
 
     let i = button_submit.length;
     while (i--)
@@ -69,6 +70,8 @@ function hydrateArticle(article) {
             localStorage.setItem("prices", JSON.stringify(pricesStorage));
             tableBuilder(prices.value);
             prices.value = "";
-        });   
+        });
+
+*/
 }
 
