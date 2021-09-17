@@ -67,12 +67,20 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
       };
     });
   
+  const elementPosition = document.querySelector(".tableCart");
+  const cloneTable = document.importNode(elementPosition.content, true);
+  
+  if (articleRegisteredLocal === null) {
+
+    const emptyCart = `<tr><td class="empty-cart"><p>Vous n'avez rien dans votre panier!<p></td></tr>`;
+    cloneTable.querySelector(".article_Name").textContent = emptyCart;
+    elementPosition.innerHtml += emptyCart;
+    console.log("-------->>>>",elementPosition );
+  
+  } else {
+    console.log("kikou2");
  
-   
-
-
-
-
+    }
 
 
 /*const prices = document.getElementsByClassName("prices");
@@ -109,3 +117,4 @@ const tableBuilder = (text) => {
 
   
 }
+//class selection to injected html code
