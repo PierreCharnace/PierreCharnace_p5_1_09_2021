@@ -167,4 +167,25 @@ cartLocal.addEventListener('click', function (add) {                 //Add item 
 
 }*/
 
-
+/*
+let cartStructure = [];
+for(item=0; item < teddyArticle.length; item++){
+  
+  cartStructure = cartStructure + `
+  <td class="col-1 nameProduct">${teddyArticle[item].name}</td>
+  <td class="col-1 quantity">
+      <select>
+          <option value="1">1<option>
+          <option value="2">2<option>
+          <option value="3">3<option>
+      </select>
+  </td>
+  <td class="col-1 priceProduct">${teddyArticle[item].price}</td>
+  <td class="col-1 totalPriceProduct"></td>
+  <td class="col-1 removeProduct text-center text-danger">X</td>
+</tr>`;
+if (item === teddyArticle.length) {
+  //put HTML in sheetsCart
+  tableCart.innerHTML = cartstructure;
+  }
+}*/

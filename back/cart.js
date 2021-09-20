@@ -66,26 +66,10 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
         popUpConfirmation();
       };
     });
-  
-  const elementPosition = document.querySelector(".tableCart");
-  const cloneTable = document.importNode(elementPosition.content, true);
-  
-  if (articleRegisteredLocal === null) {
 
-    const emptyCart = `<tr><td class="empty-cart"><p>Vous n'avez rien dans votre panier!<p></td></tr>`;
-    cloneTable.querySelector(".article_Name").textContent = emptyCart;
-    elementPosition.innerHtml += emptyCart;
-    console.log("-------->>>>",elementPosition );
-  
-  } else {
-    console.log("kikou2");
- 
-    }
-
-
-/*const prices = document.getElementsByClassName("prices");
-const storage = document.getElementsByClassName("storage") ;
-const products = document.getElementsByClassName("price");
+  /*const prices = document.getElementsByClassName("prices");
+  const storage = document.getElementsByClassName("storage") ;
+  const products = document.getElementsByClassName("price");
 
 let it = prices.length;
     
@@ -114,7 +98,52 @@ const tableBuilder = (text) => {
     localStorage.setItem("prices", JSON.stringify(pricesStorage));
     el.remove();
   };*/
-
-  
 }
-//class selection to injected html code
+
+
+const tableCart = document.querySelectorAll('.tableCart') ;
+const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
+const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
+console.log("<>",tableCart);
+console.log("*****",teddyArticle);
+
+function addTeddiesToCart() {
+  
+if (teddyArticle === null) {
+  console.log("empty");
+  let newEmpty = document.createElement('tr');
+  newEmpty.innerHTML = '<td class="bg-white text-center border" colspan = 5>Votre panier est vide</td>';
+  for (let i=0; i<tableCart.length; i++){
+  tableCart[i].before(newEmpty)};
+
+  console.log("--->",newEmpty);
+  } else {
+    console.log(teddyArticle);
+    let cartStructure = [];
+    //display article in cart if cart is not empty
+    let newFull = document.createElement('tr');
+
+    for (let item=0; item < tableCart.length; item++){
+      tableCart[item].before(newFull)};
+
+      console.log("Youhou",teddyArticle);
+    newFull.innerHTML = `<td class="col-1 nameProduct">${teddyArticle.name}</td>
+    <td class="col-1 quantity">
+        <select>
+            <option value="1">1<option>
+            <option value="2">2<option>
+            <option value="3">3<option>
+        </select>
+    </td>
+    <td class="col-1 priceProduct">${teddyArticle.price}</td>
+    <td class="col-1 totalPriceProduct"></td>
+    <td class="col-1 removeProduct text-center text-danger">X</td>
+  </tr>
+    `;
+   
+
+    console.log("I'm not empty");
+
+    }
+  }
+  addTeddiesToCart();
