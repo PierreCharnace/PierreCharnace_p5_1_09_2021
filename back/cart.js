@@ -44,13 +44,12 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
       window.location.href = "cart.html"
     }
   }
-  
-  const addArticleInLocalStorage = () => {//add article to array from LocalStorage and   //translate teddyArticle language JS to JSON
+  //add article to array from LocalStorage and//translate teddyArticle language JS to JSON***************
+  const addArticleInLocalStorage = () => {
 
         articleRegisteredLocal.push(article);
         localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
   }
-  
   /**************************************************** */
   while(item--)
     sendToCart[item].addEventListener("click", (e) => {
@@ -66,84 +65,59 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
         popUpConfirmation();
       };
     });
-
-  /*const prices = document.getElementsByClassName("prices");
-  const storage = document.getElementsByClassName("storage") ;
-  const products = document.getElementsByClassName("price");
-
-let it = prices.length;
-    
-let pricesStorage = localStorage.getItem("articles")
-? JSON.parse(localStorage.getItem("articles"))
-: [];
-
-
-const tableBuilder = (text) => {
-    const price = document.createElement("td");
-    price.innerHTML = text + ` <td class="col-1 priceProduct"></td>`;
-    while(it--)
-      prices[it].appendChild(price);
-  };
-  
-  const getPrices = JSON.parse(localStorage.getItem("prices"));
-  console.log(prices);
-  getPrices.forEach(price => {
-    tableBuilder(price);
-  });
-  
-  const deletePrice = (btn) => {
-    let el = btn.parentNode;
-    const index = [...el.parentElement.children].indexOf(el);
-     pricesStorage.splice(index, 1);
-    localStorage.setItem("prices", JSON.stringify(pricesStorage));
-    el.remove();
-  };*/
 }
 
 
-const tableCart = document.querySelectorAll('.tableCart') ;
+const tableCart = document.querySelector('.tableCart') ;
 const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
 const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
-console.log("<>",tableCart);
-console.log("*****",teddyArticle);
+let cartStructure = [];
 
-function addTeddiesToCart() {
+const addTeddiesToCart = () => {
   
-if (teddyArticle === null) {
+if (teddyArticle === null || teddyArticle == 0) {
   console.log("empty");
   let newEmpty = document.createElement('tr');
   newEmpty.innerHTML = '<td class="bg-white text-center border" colspan = 5>Votre panier est vide</td>';
   for (let i=0; i<tableCart.length; i++){
   tableCart[i].before(newEmpty)};
 
-  console.log("--->",newEmpty);
   } else {
-    console.log(teddyArticle);
-    let cartStructure = [];
-    //display article in cart if cart is not empty
-    let newFull = document.createElement('tr');
-
-    for (let item=0; item < tableCart.length; item++){
-      tableCart[item].before(newFull)};
-
-      console.log("Youhou",teddyArticle);
-    newFull.innerHTML = `<td class="col-1 nameProduct">${teddyArticle.name}</td>
-    <td class="col-1 quantity">
-        <select>
-            <option value="1">1<option>
-            <option value="2">2<option>
-            <option value="3">3<option>
-        </select>
-    </td>
-    <td class="col-1 priceProduct">${teddyArticle.price}</td>
-    <td class="col-1 totalPriceProduct"></td>
-    <td class="col-1 removeProduct text-center text-danger">X</td>
-  </tr>
-    `;
-   
-
-    console.log("I'm not empty");
-
+    //display teddyArticle in cart if cart is not empty
+    for (item = 0; item < teddyArticle.length; item++){
+      
+      cartStructure = cartStructure + `
+      <tr class="bg-white border border rounded">
+        <td class="col-1 nameProduct text-center">${teddyArticle[item].name}</td>
+        <td class="col-1 quantity text-center">1</td>
+        <td class="col-1 priceProduct">${teddyArticle[item].price / 100 + "€"}</td>
+        <td class="col-1 removeProduct text-center" colspan="2"><button type="button" class=" btn-del text-danger bg-white border-light">X</button></td>
+      </tr>`;
     }
+      if (item === teddyArticle.length) {
+        tableCart.innerHTML = cartStructure;
+      }
+     
+       console.log("I'm not empty");
+    }
+    //localStorage.removeItem("teddyArticle")
   }
   addTeddiesToCart();
+
+  //********************************************DELETE AN ARTICLE********************************************/
+let btnDel = document.querySelectorAll(".btn-del")
+console.log(btnDel);
+for (let i = 0; i < btnDel.length; i++) {
+  btnDel[i].addEventListener("click", (e) => {
+    e.preventDefault();
+    //teddyArticle.
+
+     }    
+   
+  )} 
+  console.log("youhou2", teddyArticleJSON.indexOf('{'))
+
+//function RemoveCart() {
+ // localStorage.deleteArray("teddyArticle");
+ // location.reloaded();
+//}

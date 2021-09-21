@@ -1,6 +1,6 @@
 
 
-function onLoadCartNumbers() {
+/*function onLoadCartNumbers() {
     let productNumbers = localStorage.getItem('cartNumbers');
 
     if(productNumbers) {

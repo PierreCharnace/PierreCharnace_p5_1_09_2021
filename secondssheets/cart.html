@@ -51,19 +51,21 @@
           <table class="table table-secondary table-hover align-items-end font-size">
             <thead class="">
               <tr>
-                <th class="col-1">Produits</th>
+                <th class="col-1 text-center">Produits</th>
                 <th class="col-1">Quantité</th>
                 <th class="col-1">Prix</th>
-                <th class="col-1">total</th>
-                <th class="col-1 px-1 text-center remove"> X</th>
+                <th class="col-1 px-1 text-center remove" colspan="2"> X</th>
               </tr>
             </thead>
-            <tbody class="tableCart" id="tableCart">
-
-              <tr class=" totalCart colorino border rounded" id="totalCart">
-                <td class="p-0 py-2 text-center" colspan="3">Total</td>
-                <td class="px-3 py-2 text-left  totalPriceProducts" colspan="2">0 €</td>
+            <tbody class="tableCart " id="tableCart">
+            <tfoot>
+              <tr class="totalCart colorino border rounded" id="totalCart">
+                <td class="col-1"></td>
+                <td class="col-1 p-0 py-2 text-center" colspan="1">Total</td>
+                <td class="col-1 px-3 py-2 text-left totalPriceProducts" colspan="1">0 €</td>
+                <td class="col-1"></td>
               </tr>
+            </tfoot>
             </tbody>
           </table>
         </div>
