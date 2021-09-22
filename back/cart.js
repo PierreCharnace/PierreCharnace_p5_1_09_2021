@@ -102,18 +102,26 @@ let btnDel = document.querySelectorAll(".btn-del")
 
 for (let i = 0; i < btnDel.length; i++) {
   btnDel[i].addEventListener("click", (e) => {
-    console.log("///",teddyArticle[i]);
-    let teddyRemove = JSON.stringify(teddyArticle[i])
-    if (teddyRemove.indexOf(teddyArticle)) {
-      console.log("--->>>",teddyRemove.indexOf(teddyRemove));
-      console.log(teddyRemove);
-      localStorage.removeItem(teddyRemove);
-     // location.reload();
+    console.log(teddyArticle[i]._id);
+    e.preventDefault();
+
+    if (teddyArticle[i] != null)
+
+    localStorage.removeItem(teddyArticle[i])
+    console.log("ooooo",localStorage.removeItem(teddyArticle[i]));
+   
+   /* 
+      let teddyRemove = JSON.stringify(teddyArticle[i])
+      if (teddyArticleJSON.indexOf(teddyRemove) == 0) {
+      console.log(teddyRemove.indexOf(teddyRemove));
+      localStorage.removeItem(teddyArticleJSON, teddyRemove);
+      //console.log(localStorage.removeItem("teddyArticle", teddyRemove));
+      //location.reload();
     }
 
 
 
-   /* e.preventDefault();
+   /* 
       console.log("******>",teddyArticle[i]);
     
       
@@ -130,7 +138,21 @@ for (let i = 0; i < btnDel.length; i++) {
 
   
 
-//function RemoveCart() {
- // localStorage.deleteArray("teddyArticle");
- // location.reloaded();
-//}
+   /*********************************TOTAL PRICE ARTICLE */
+
+   let totalPriceProduct = [];
+
+   for (let item = 0; item < teddyArticle.length; item++) {
+     let totalPriceCart = teddyArticle[item].price / 100;
+    totalPriceProduct.push(totalPriceCart);
+    console.log(totalPriceProduct);
+
+   }
+
+   //***************************add total to cart */
+
+
+   const reducer = (acc, cur) => acc + cur;
+   const totalPrice = totalPriceProduct .reduce(reducer,0);
+   console.log(totalPrice);
+
