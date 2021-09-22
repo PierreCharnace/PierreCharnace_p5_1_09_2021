@@ -34,7 +34,7 @@
                   <a href="../front-end/index.html#products-list" class="nav-link">Produits</a>
                 </li>
                 <li class="nav-item active">
-                  <a href="#" class="nav-link">Panier <span> 0</span></a>
+                  <a href="#" class="nav-link">Panier</a>
                 </li>
               </ul>
             </nav>
@@ -63,7 +63,7 @@
               <tr class="totalCart colorino border rounded" id="totalCart">
                 <td class="col-1"></td>
                 <td class="col-1 p-0 py-2 text-center" colspan="1">Total</td>
-                <td class="col-1 px-3 py-2 text-left TotalPriceArticle" colspan="1">0 €</td>
+                <td class="col-1 px-3 py-2 text-left totalPriceArticle" colspan="2">0 €</td>
                 <td class="col-1"></td>
               </tr>
             </tfoot>
@@ -90,8 +90,8 @@
                 <input required pattern="^[A-Za-z0-9\s,-.]*$" type="text" id="address" class="form-control" name="address"/>
               </div>
               <div class="form-group col-md-4">
-                <label for="city">Code postal</label>
-                <input id="zip" name="zip" type="text" class="form-control" pattern="[0-9]*">
+                <label for="zip">Code postal</label>
+                <input required id="zip" name="zip" type="text" class="form-control" pattern="[0-9]*">
               </div>
               <div class="form-group col-md-12">
                 <label for="city">Ville</label>
@@ -104,7 +104,7 @@
                 <input required type="email" id="email" class="form-control" name="email"/>
               </div>
               <div class="form-group col-12 col-md-12 text-right">
-                <button type="submit" class="btn btn-success">Commander</button>
+                <button type="submit" class="btn btn-success" id="sendForm">Commander</button>
               </div>
             </div>
           </form>

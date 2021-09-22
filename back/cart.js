@@ -50,7 +50,8 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
     articleRegisteredLocal.push(article);
     localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
   }
-  /**************************************************** */
+  /***********************ADD AND POP UP***************************** */
+  const addAndPopUp = (articleRegisteredLocal) => {
   while(item--)
     sendToCart[item].addEventListener("click", (e) => {
       e.preventDefault();
@@ -65,6 +66,8 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
         popUpConfirmation();
       };
     });
+  }
+  addAndPopUp();
 }
 
 
@@ -72,8 +75,9 @@ const tableCart = document.querySelector('.tableCart') ;
 const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
 const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
 let cartStructure = [];
+
 const addTeddiesToCart = () => {
-  
+
 if (teddyArticle == null ) {
   console.log("empty");
 
@@ -142,17 +146,17 @@ for (let i = 0; i < btnDel.length; i++) {
 
    let totalPriceProduct = [];
 
+  const calculateTotalPrice = () => {
+
    for (let item = 0; item < teddyArticle.length; item++) {
      let totalPriceCart = teddyArticle[item].price / 100;
     totalPriceProduct.push(totalPriceCart);
     console.log(totalPriceProduct);
-
    }
-
    //***************************add total to cart */
-
-
    const reducer = (acc, cur) => acc + cur;
-   const totalPrice = totalPriceProduct .reduce(reducer,0);
-   console.log(totalPrice);
+   const totalPrice = totalPriceProduct.reduce(reducer,0);
+   document.querySelector(".totalPriceArticle").textContent = `${totalPrice} €`;
+  } 
 
+  calculateTotalPrice ()
