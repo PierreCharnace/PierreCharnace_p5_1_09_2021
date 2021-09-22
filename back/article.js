@@ -49,7 +49,7 @@ function hydrateArticle(article) {
     
     /*********************cartNumbers****************************** */
       
-    let carts = document.querySelectorAll(".add-cart");
+    /*let carts = document.querySelectorAll(".add-cart");
 
     for (let i=0; i < carts.length; i++ ) {
         carts[i].addEventListener('click', () => {
@@ -57,7 +57,7 @@ function hydrateArticle(article) {
  
         });
     
-    }
+    }*/
     
     //***************add teddies on cart******************************** */
    /* const button_submit = document.getElementsByClassName("button-submit");

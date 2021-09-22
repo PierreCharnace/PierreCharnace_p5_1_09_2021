@@ -47,8 +47,8 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
   //add article to array from LocalStorage and//translate teddyArticle language JS to JSON***************
   const addArticleInLocalStorage = () => {
 
-        articleRegisteredLocal.push(article);
-        localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
+    articleRegisteredLocal.push(article);
+    localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
   }
   /**************************************************** */
   while(item--)
@@ -72,15 +72,10 @@ const tableCart = document.querySelector('.tableCart') ;
 const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
 const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
 let cartStructure = [];
-
 const addTeddiesToCart = () => {
   
-if (teddyArticle === null || teddyArticle == 0) {
+if (teddyArticle == null ) {
   console.log("empty");
-  let newEmpty = document.createElement('tr');
-  newEmpty.innerHTML = '<td class="bg-white text-center border" colspan = 5>Votre panier est vide</td>';
-  for (let i=0; i<tableCart.length; i++){
-  tableCart[i].before(newEmpty)};
 
   } else {
     //display teddyArticle in cart if cart is not empty
@@ -97,25 +92,43 @@ if (teddyArticle === null || teddyArticle == 0) {
       if (item === teddyArticle.length) {
         tableCart.innerHTML = cartStructure;
       }
-     
        console.log("I'm not empty");
     }
-    //localStorage.removeItem("teddyArticle")
   }
   addTeddiesToCart();
 
   //********************************************DELETE AN ARTICLE********************************************/
 let btnDel = document.querySelectorAll(".btn-del")
-console.log(btnDel);
+
 for (let i = 0; i < btnDel.length; i++) {
   btnDel[i].addEventListener("click", (e) => {
-    e.preventDefault();
-    //teddyArticle.
+    console.log("///",teddyArticle[i]);
+    let teddyRemove = JSON.stringify(teddyArticle[i])
+    if (teddyRemove.indexOf(teddyArticle)) {
+      console.log("--->>>",teddyRemove.indexOf(teddyRemove));
+      console.log(teddyRemove);
+      localStorage.removeItem(teddyRemove);
+     // location.reload();
+    }
 
-     }    
+
+
+   /* e.preventDefault();
+      console.log("******>",teddyArticle[i]);
+    
+      
+      window.localStorage.removeItem(teddyRemove);
+      localStorage.removeItem("teddyArticle", teddyRemove);
+     // location.reload();
+     console.log(teddyArticle);*/
+     
+
+     // console.log(window.localStorage);
+    }
    
   )} 
-  console.log("youhou2", teddyArticleJSON.indexOf('{'))
+
+  
 
 //function RemoveCart() {
  // localStorage.deleteArray("teddyArticle");
