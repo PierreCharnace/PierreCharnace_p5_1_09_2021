@@ -51,7 +51,7 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
     localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
   }
   /***********************ADD AND POP UP***************************** */
-  const addAndPopUp = (articleRegisteredLocal) => {
+  const addAndPopUp = () => {
   while(item--)
     sendToCart[item].addEventListener("click", (e) => {
       e.preventDefault();
@@ -106,13 +106,12 @@ let btnDel = document.querySelectorAll(".btn-del")
 
 for (let i = 0; i < btnDel.length; i++) {
   btnDel[i].addEventListener("click", (e) => {
-    console.log(teddyArticle[i]._id);
     e.preventDefault();
 
-    if (teddyArticle[i] != null)
+    /*if (teddyArticle[i] != null)
 
     localStorage.removeItem(teddyArticle[i])
-    console.log("ooooo",localStorage.removeItem(teddyArticle[i]));
+    console.log("ooooo",localStorage.removeItem(teddyArticle[i]));*/
    
    /* 
       let teddyRemove = JSON.stringify(teddyArticle[i])
@@ -122,9 +121,6 @@ for (let i = 0; i < btnDel.length; i++) {
       //console.log(localStorage.removeItem("teddyArticle", teddyRemove));
       //location.reload();
     }
-
-
-
    /* 
       console.log("******>",teddyArticle[i]);
     
@@ -133,14 +129,28 @@ for (let i = 0; i < btnDel.length; i++) {
       localStorage.removeItem("teddyArticle", teddyRemove);
      // location.reload();
      console.log(teddyArticle);*/
-     
-
      // console.log(window.localStorage);
     }
    
   )} 
 
-  
+  /***********************DeleteALLCART */
+  let btnClear = document.querySelectorAll("#deleteAll")
+
+  for (let i = 0; i < btnClear.length; i++) {
+    btnClear[i].addEventListener("click", (e) => {
+      e.preventDefault();
+      function clear() {
+      localStorage.clear();
+      window.location.reload();
+
+      }
+      clear()
+     
+    }
+    )
+  };
+
 
    /*********************************TOTAL PRICE ARTICLE */
 
@@ -151,7 +161,6 @@ for (let i = 0; i < btnDel.length; i++) {
    for (let item = 0; item < teddyArticle.length; item++) {
      let totalPriceCart = teddyArticle[item].price / 100;
     totalPriceProduct.push(totalPriceCart);
-    console.log(totalPriceProduct);
    }
    //***************************add total to cart */
    const reducer = (acc, cur) => acc + cur;

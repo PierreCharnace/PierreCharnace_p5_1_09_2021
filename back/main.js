@@ -1,34 +1,57 @@
 /**************************GET VALUES FORM AND PUT IN LOCALSTORAGE */
-const btnSendForm = document.querySelector("#sendForm")
-
-btnSendForm.addEventListener("click", (e) => {
+const btnSendForm = document.querySelectorAll("#sendForm")
+for (let i = 0; i < btnSendForm.length; i++) {
+btnSendForm[i].addEventListener("click", (e) => {
   e.preventDefault();
-  localStorage.setItem("lastName", document.querySelector("#lastName").value);
-  localStorage.setItem("firstName", document.querySelector("#firstName").value);
-  localStorage.setItem("address", document.querySelector("#address").value);
-  localStorage.setItem("zip", document.querySelector("#zip").value);
-  localStorage.setItem("city", document.querySelector("#city").value);
-  localStorage.setItem("email", document.querySelector("#email").value);
 
-  console.log("youhou",document.querySelector("#lastName").value);
+    class form {
+      constructor(){
+        this.lastName = document.querySelector("#lastName").value;
+        this.firstName = document.querySelector("#firstName").value;
+        this.address = document.querySelector("#address").value;
+        this.zip = document.querySelector("#zip").value;
+        this.city = document.querySelector("#city").value;
+        this.email = document.querySelector("#email").value;
+      }
+    }
+    const formValues = new form();
+    localStorage.setItem("formValues", JSON.stringify(formValues));
+    
+    /***************************form VALIDATION */
+      
+    const lastName = formValues.lastName;
+    const firstName = formValues.firstName;
+    const address = formValues.address;
+    const zip = formValues.zip;
+    const city = formValues.city;
+    const email = formValues.email;
+
+    if (/^[A-Za-z]{3,20}$/.test(firstName)) {
+    console.log("ok");
+    } else {
+      console.log("KO");
+    alert("ERREUR, Veuillez remplir le formulaire correctement")
+    };
+
+    const toSend = {
+      teddyArticle, formValues
+    }
+
+    const dataLocalStorage = JSON.parse(localStorage.getItem("formValues"));
+    
+    document.querySelector("#lastName").setAttribute("value", dataLocalStorage.lastName);
+
+    /*const keepValuesInInput = (input) => {
   
-  const form = {
-    lastName: localStorage.getItem("lastName"),
-    firstName: localStorage.getItem("firstName"),
-    address: localStorage.getItem("address"),
-    address: localStorage.getItem("zip"),
-    address: localStorage.getItem("city"),
-    address: localStorage.getItem("email")
-  }
-  console.log("**********",form);
-  
-})
+        document.querySelector(`#${input}`).value = dataLocalStorage[input];
+        console.log(dataLocalStorage);
+    };
+      keepValuesInInput("lastName");
+      keepValuesInInput("firstName");
+      keepValuesInInput("address");
+      keepValuesInInput("zip");
+      keepValuesInInput("city");
+      keepValuesInInput("email");*/
+  });
+}
 
-
-  /*
-    let articleImageUrl = article.imageUrl;                     // element.imageUrl is a part of backend data received from JSON file
-    let articleId = article._id;                                // element._id is a part of backend data received from JSON file
-    let articleName = article.name;                             // element.name is a part of backend data received from JSON file
-    let articlePrice = article.price;                           // element.price is a part of backend data received from JSON file
-    let articleQuantity = 1;
-*/
