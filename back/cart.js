@@ -44,13 +44,13 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
       window.location.href = "cart.html"
     }
   }
-  //add article to array from LocalStorage and//translate teddyArticle language JS to JSON***************
+  //**********add article to array from LocalStorage and//translate teddyArticle language JS to JSON***************
   const addArticleInLocalStorage = () => {
 
     articleRegisteredLocal.push(article);
     localStorage.setItem("teddyArticle", JSON.stringify(articleRegisteredLocal));
   }
-  /***********************ADD AND POP UP***************************** */
+  /***************************************ADD AND POP UP********************************************** */
   const addAndPopUp = () => {
   while(item--)
     sendToCart[item].addEventListener("click", (e) => {
@@ -134,7 +134,7 @@ for (let i = 0; i < btnDel.length; i++) {
    
   )} 
 
-  /***********************DeleteALLCART */
+  /***********************DeleteALLCART *********************************************/
   let btnClear = document.querySelectorAll("#deleteAll")
 
   for (let i = 0; i < btnClear.length; i++) {
@@ -152,7 +152,7 @@ for (let i = 0; i < btnDel.length; i++) {
   };
 
 
-   /*********************************TOTAL PRICE ARTICLE */
+   /*********************************TOTAL PRICE ARTICLE ******************************/
 
    let totalPriceProduct = [];
 

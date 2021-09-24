@@ -1,8 +1,9 @@
 /**************************GET VALUES FORM AND PUT IN LOCALSTORAGE */
 const btnSendForm = document.querySelectorAll("#sendForm")
+
 for (let i = 0; i < btnSendForm.length; i++) {
-btnSendForm[i].addEventListener("click", (e) => {
-  e.preventDefault();
+  btnSendForm[i].addEventListener("click", (e) => {
+    e.preventDefault();
 
     class form {
       constructor(){
@@ -15,10 +16,13 @@ btnSendForm[i].addEventListener("click", (e) => {
       }
     }
     const formValues = new form();
-    localStorage.setItem("formValues", JSON.stringify(formValues));
+
+    //--------------------------------SEND OBJECT TO LOCALSTORAGE---------------------------------------------
+  const toSend = {
+    teddyArticle, formValues
+  }  
+    /***************************form VALIDATION***************************************** */
     
-    /***************************form VALIDATION */
-      
     const lastName = formValues.lastName;
     const firstName = formValues.firstName;
     const address = formValues.address;
@@ -26,32 +30,97 @@ btnSendForm[i].addEventListener("click", (e) => {
     const city = formValues.city;
     const email = formValues.email;
 
-    if (/^[A-Za-z]{3,20}$/.test(firstName)) {
-    console.log("ok");
-    } else {
-      console.log("KO");
-    alert("ERREUR, Veuillez remplir le formulaire correctement")
+    const textAlert = (value) => {
+      return `${value} ERREUR, les chiffres, les symboles et les champs \nvides ne sont pas autorisé`
+    }
+/********************REGEX RULES************************************** */
+    const regExNameCity = (value) => {
+      return /^[A-Za-z]{1,100}$/.test(value)
     };
 
-    const toSend = {
-      teddyArticle, formValues
+    const regExZip = (value) => {
+      return /^[0-9]{5}$/.test(value)
+    };
+
+    const regExAddress = (value) => {
+      return /^[0-9A-Za-z\s]{1,50}$/.test(value)
+    };
+
+    const regExEmail = (value) => {
+      return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)
+    };
+/*********************FUNCTIONS CONTROL******************************************************* */
+    function lastNameControl() {
+      if (regExNameCity(lastName)) {
+        return true;
+        } else {
+          alert(textAlert("Nom"))
+          return false;
+        }
+    };
+    
+    function firstNameControl() {
+      if (regExNameCity(firstName)) {
+      return true;
+        } else {
+          alert(textAlert("Prénom "))
+          return false;
+        }
+    };
+
+    function zipControl() {
+      if (regExZip(zip)) {
+        return true;
+          } else {
+            alert("Le code postale doit être uniquement composé de 5 chiffres. ")
+            return false;
+          }
+    };
+
+    function addressControl() {
+      if (regExAddress(address)) {
+        return true;
+          } else {
+            alert (("L'adresse ne doit pas contenir de caratères spéciaux"))
+            return false;
+          }
+    };
+
+    function cityControl() {
+      if (regExNameCity(city)) {
+        return true;
+          } else {
+            alert(textAlert("Ville"))
+            return false;
+          }
     }
 
-    const dataLocalStorage = JSON.parse(localStorage.getItem("formValues"));
-    
-    document.querySelector("#lastName").setAttribute("value", dataLocalStorage.lastName);
-
-    /*const keepValuesInInput = (input) => {
-  
-        document.querySelector(`#${input}`).value = dataLocalStorage[input];
-        console.log(dataLocalStorage);
-    };
-      keepValuesInInput("lastName");
-      keepValuesInInput("firstName");
-      keepValuesInInput("address");
-      keepValuesInInput("zip");
-      keepValuesInInput("city");
-      keepValuesInInput("email");*/
+    function emailControl() {
+      if (regExEmail(email) && regExAddress(address)) {
+        return true;
+          } else {
+            alert("L'e-mail, doit comporter un '@' et un '.' après, pour être valide")
+            return false;
+          }
+    }
+/******************************FORM VALIDATION SECOND PART*************************************************************** */
+    if (lastNameControl() && firstNameControl() && zipControl() && addressControl() && cityControl() && emailControl() == true) {
+      localStorage.setItem("formValues", JSON.stringify(formValues));
+    }
   });
+
+  /***************************PUT CONTENT LOCAL STORAGE IN FIELD FORM************************************** */
+    const dataLocalStorage = JSON.parse(localStorage.getItem("formValues"));
+
+    function keepFieldInput(input) {
+      document.querySelector(`#${input}`).value = dataLocalStorage[input];
+    };
+
+    keepFieldInput("lastName")
+    keepFieldInput("firstName")
+    keepFieldInput("address")
+    keepFieldInput("city")
+    keepFieldInput("zip")
+    keepFieldInput("email")
 }
 
