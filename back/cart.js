@@ -70,33 +70,30 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
   addAndPopUp();
 }
 
-
 const tableCart = document.querySelector('.tableCart') ;
 const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
 const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
 let cartStructure = [];
 
 const addTeddiesToCart = () => {
-
 if (teddyArticle == null ) {
   console.log("empty");
 
   } else {
     //display teddyArticle in cart if cart is not empty
     for (item = 0; item < teddyArticle.length; item++){
-      
+     
       cartStructure = cartStructure + `
       <tr class="bg-white border border rounded">
         <td class="col-1 nameProduct text-center">${teddyArticle[item].name}</td>
         <td class="col-1 quantity text-center">1</td>
         <td class="col-1 priceProduct">${teddyArticle[item].price / 100 + "€"}</td>
         <td class="col-1 removeProduct text-center" colspan="2"><button type="button" class=" btn-del text-danger bg-white border-light">X</button></td>
-      </tr>`;
+        </tr>`;
     }
       if (item === teddyArticle.length) {
         tableCart.innerHTML = cartStructure;
       }
-       console.log("I'm not empty");
     }
   }
   addTeddiesToCart();
@@ -107,29 +104,6 @@ let btnDel = document.querySelectorAll(".btn-del")
 for (let i = 0; i < btnDel.length; i++) {
   btnDel[i].addEventListener("click", (e) => {
     e.preventDefault();
-
-    /*if (teddyArticle[i] != null)
-
-    localStorage.removeItem(teddyArticle[i])
-    console.log("ooooo",localStorage.removeItem(teddyArticle[i]));*/
-   
-   /* 
-      let teddyRemove = JSON.stringify(teddyArticle[i])
-      if (teddyArticleJSON.indexOf(teddyRemove) == 0) {
-      console.log(teddyRemove.indexOf(teddyRemove));
-      localStorage.removeItem(teddyArticleJSON, teddyRemove);
-      //console.log(localStorage.removeItem("teddyArticle", teddyRemove));
-      //location.reload();
-    }
-   /* 
-      console.log("******>",teddyArticle[i]);
-    
-      
-      window.localStorage.removeItem(teddyRemove);
-      localStorage.removeItem("teddyArticle", teddyRemove);
-     // location.reload();
-     console.log(teddyArticle);*/
-     // console.log(window.localStorage);
     }
    
   )} 
@@ -143,18 +117,13 @@ for (let i = 0; i < btnDel.length; i++) {
       function clear() {
       localStorage.clear();
       window.location.reload();
-
       }
-      clear()
-     
-    }
-    )
+      clear()     
+    })
   };
-
-
    /*********************************TOTAL PRICE ARTICLE ******************************/
 
-   let totalPriceProduct = [];
+  let totalPriceProduct = [];
 
   const calculateTotalPrice = () => {
 

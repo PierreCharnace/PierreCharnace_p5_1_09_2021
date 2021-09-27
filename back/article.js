@@ -48,30 +48,5 @@ function hydrateArticle(article) {
     //et ensuite la page se construit avec les éléments
     
     /*********************cartNumbers****************************** */
-      
-    /*let carts = document.querySelectorAll(".add-cart");
-
-    for (let i=0; i < carts.length; i++ ) {
-        carts[i].addEventListener('click', () => {
-            cartNumbers();
- 
-        });
-    
-    }*/
-    
-    //***************add teddies on cart******************************** */
-   /* const button_submit = document.getElementsByClassName("button-submit");
-
-    let i = button_submit.length;
-    while (i--)
-        button_submit[i].addEventListener("click", (e) => {
-            e.preventDefault();
-            pricesStorage.push(prices.value);
-            localStorage.setItem("prices", JSON.stringify(pricesStorage));
-            tableBuilder(prices.value);
-            prices.value = "";
-        });
-
-*/
 }
 

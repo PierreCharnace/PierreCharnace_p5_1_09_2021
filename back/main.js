@@ -7,10 +7,10 @@ for (let i = 0; i < btnSendForm.length; i++) {
 
     class form {
       constructor(){
-        this.lastName = document.querySelector("#lastName").value;
         this.firstName = document.querySelector("#firstName").value;
+        this.lastName = document.querySelector("#lastName").value;
         this.address = document.querySelector("#address").value;
-        this.zip = document.querySelector("#zip").value;
+        //this.zip = document.querySelector("#zip").value;
         this.city = document.querySelector("#city").value;
         this.email = document.querySelector("#email").value;
       }
@@ -18,15 +18,13 @@ for (let i = 0; i < btnSendForm.length; i++) {
     const formValues = new form();
 
     //--------------------------------SEND OBJECT TO LOCALSTORAGE---------------------------------------------
-  const toSend = {
-    teddyArticle, formValues
-  }  
+    const toSend = {
+      teddyArticle, formValues
+    } 
     /***************************form VALIDATION***************************************** */
-    
-    const lastName = formValues.lastName;
     const firstName = formValues.firstName;
+    const lastName = formValues.lastName;
     const address = formValues.address;
-    const zip = formValues.zip;
     const city = formValues.city;
     const email = formValues.email;
 
@@ -104,10 +102,28 @@ for (let i = 0; i < btnSendForm.length; i++) {
           }
     }
 /******************************FORM VALIDATION SECOND PART*************************************************************** */
-    if (lastNameControl() && firstNameControl() && zipControl() && addressControl() && cityControl() && emailControl() == true) {
+    if (lastNameControl() && firstNameControl()  && addressControl() && cityControl() && emailControl() == true) {
       localStorage.setItem("formValues", JSON.stringify(formValues));
     }
+/***********************API CALL AND SEND DATA WITH POST REQUEST***************************** */
+
+let contact = formValues;
+let products = teddyArticle;
+let formToSend = {contact, products};
+console.log("/*/*/*",formToSend);
+
+    const promise = fetch("http://localhost:3000/api/teddies/order", { 
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(formToSend),
+      headers: {
+        "content-type" : "application/json",
+      },
+    });
+    console.log("*/*/*/",promise);
   });
+  
+  
 
   /***************************PUT CONTENT LOCAL STORAGE IN FIELD FORM************************************** */
     const dataLocalStorage = JSON.parse(localStorage.getItem("formValues"));
