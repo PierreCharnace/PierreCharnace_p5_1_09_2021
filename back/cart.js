@@ -31,7 +31,6 @@ function articleCart(article) {
 
   const sendToCart = document.querySelectorAll("#button-submit");
   let item = sendToCart.length;//loop for addEventListener
-  
   //translate teddyArticle language JSON to JS
   let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));
 
