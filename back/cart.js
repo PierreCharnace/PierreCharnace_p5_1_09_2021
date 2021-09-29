@@ -69,7 +69,7 @@ Continuer vos achats OK ou payer vos produits ANNULER`)){
   addAndPopUp();
 }
 
-const tableCart = document.querySelector('.tableCart') ;
+const tableCart = document.querySelector('.tableCart');
 const teddyArticleJSON = localStorage.getItem('teddyArticle');//get teddyArticle in localStorage
 const teddyArticle = JSON.parse(teddyArticleJSON);// transform teddyArticle in js value
 let cartStructure = [];

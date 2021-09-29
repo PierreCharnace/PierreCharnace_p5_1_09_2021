@@ -100,36 +100,33 @@ for (let i = 0; i < btnSendForm.length; i++) {
     }
 /******************************FORM VALIDATION SECOND PART*************************************************************** */
     if (lastNameControl() && firstNameControl()  && addressControl() && cityControl() && emailControl() == true && teddyArticle.length>0) {
-     // localStorage.setItem("formValues", JSON.stringify(formValues));
+      localStorage.setItem("formValues", JSON.stringify(formValues));
     
 /***********************API CALL AND SEND DATA WITH POST REQUEST***************************** */
- let idTeddy = [];
- for (let i = 0; i < teddyArticle.quantity; i++) {
-   idTeddy.push(teddyArticle.id);
- }
+/********************************************************** */
 
- console.log("-->",idTeddy);
-let products = idTeddy;
+/*********************************************************** */  
 
-const order ={
-  contact : {
-    firstName: firstName,
-    lastName: lastName,
-    address: address,
-    city: city,
-    email: email,
-  },
-  products : products
-}
-console.log("youhou",(order));
 
+let products = teddyArticle ;
+  const order ={
+    contact : {
+      firstName: firstName,
+      lastName: lastName,
+      address: address,
+      city: city,
+      email: email,
+    },
+    products : products,
+  }
+  console.log("youhou",(order));
+console.log(order);
 
    fetch("http://localhost:3000/api/teddies/order", { 
       method: "POST",
       body: JSON.stringify(order),
       headers: {"content-type" : "application/json; charset=utf-8"},
     });
-
   }
   });
   
