@@ -76,7 +76,6 @@ let cartStructure = [];
 
 const addTeddiesToCart = () => {
 if (teddyArticle == null ) {
-  console.log("empty");
 
   } else {
     //display teddyArticle in cart if cart is not empty
@@ -114,7 +113,7 @@ for (let i = 0; i < btnDel.length; i++) {
     btnClear[i].addEventListener("click", (e) => {
       e.preventDefault();
       function clear() {
-      localStorage.clear();
+      localStorage.removeItem('teddyArticle');
       window.location.reload();
       }
       clear()     
