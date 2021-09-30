@@ -2,7 +2,7 @@
     //1 - récupération du tableau des ours, await cela veut dire que la fontction va attendre d'avoir récuperer le tableau avant de passer sur le for
     const articles = await getArticles()
 
-    //2 - on parcours le tableau et on appele la fonction displayArticle pour savoir ou placer les éléments dans ton fichier html
+    //2 - on parcours le tableau et on appel la fonction displayArticle pour savoir ou placer les éléments dans ton fichier html
     for ( article of articles) {
         displayArticle(article)
     }
@@ -10,7 +10,7 @@
 
 //1
 function getArticles() {
-    return fetch("http://localhost:3000/api/teddies")
+    return fetch("http://localhost:3000/api/teddies")// appel de l'api
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
         })

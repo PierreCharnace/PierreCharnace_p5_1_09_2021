@@ -19,9 +19,7 @@ function getArticle(articleId) {
         .then(function(article) {
             return article
         })
-
         //if article is ok return to begining
-
         .catch(function() {
             alert("Erreur de connexion au serveur")
         })     
@@ -31,13 +29,11 @@ function articleCart(article) {
 
   const sendToCart = document.querySelectorAll("#button-submit");
   let item = sendToCart.length;//loop for addEventListener
-  //translate teddyArticle language JSON to JS
-  let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));
-
-  //PopUpConfirmation for put article in localStorage
+  let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));//translate teddyArticle language JSON to JS
+  //PopUpConfirmation for put article in localStorage or not
   const popUpConfirmation = () => {
-    if(window.confirm(`L'article ${article.name} a bien été ajouter au panier 
-Continuer vos achats OK ou payer vos produits ANNULER`)){
+        if(window.confirm(`L'article ${article.name} a bien été ajouté au panier. 
+Continuez vos achats OK ou payez vos produits ANNULER`)){
     window.location.href  = "../front-end/index.html"
     } else{
       window.location.href = "cart.html"
@@ -96,16 +92,6 @@ if (teddyArticle == null ) {
   }
   addTeddiesToCart();
 
-  //********************************************DELETE AN ARTICLE********************************************/
-let btnDel = document.querySelectorAll(".btn-del")
-
-for (let i = 0; i < btnDel.length; i++) {
-  btnDel[i].addEventListener("click", (e) => {
-    e.preventDefault();
-    }
-   
-  )} 
-
   /***********************DeleteALLCART *********************************************/
   let btnClear = document.querySelectorAll("#deleteAll")
 
@@ -120,8 +106,8 @@ for (let i = 0; i < btnDel.length; i++) {
     })
   };
    /*********************************TOTAL PRICE ARTICLE ******************************/
-
-  let totalPriceProduct = [];
+  
+   let totalPriceProduct = [];
 
   const calculateTotalPrice = () => {
 
@@ -134,5 +120,4 @@ for (let i = 0; i < btnDel.length; i++) {
    const totalPrice = totalPriceProduct.reduce(reducer,0);
    document.querySelector(".totalPriceArticle").textContent = `${totalPrice} €`;
   } 
-
   calculateTotalPrice ()

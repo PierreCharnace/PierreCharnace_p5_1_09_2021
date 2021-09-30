@@ -1,6 +1,6 @@
 /**************************GET VALUES FORM AND PUT IN LOCALSTORAGE */
 const btnSendForm = document.querySelectorAll("#sendForm")
-
+/*********************************************Form creation */
 for (let i = 0; i < btnSendForm.length; i++) {
   btnSendForm[i].addEventListener("click", (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ for (let i = 0; i < btnSendForm.length; i++) {
     const firstName = formValues.firstName;
     const lastName = formValues.lastName;
     const address = formValues.address;
+    const zip = formValues.zip;
     const city = formValues.city;
     const email = formValues.email;
 
@@ -30,7 +31,7 @@ for (let i = 0; i < btnSendForm.length; i++) {
     }
     /********************REGEX RULES************************************** */
     const regExNameCity = (value) => {
-      return /^[A-Za-z]{1,100}$/.test(value)
+      return /^[A-Za-zéèàê]{1,100}$/.test(value)
     };
 
     const regExZip = (value) => {
@@ -99,23 +100,17 @@ for (let i = 0; i < btnSendForm.length; i++) {
           }
     }
     /******************************FORM VALIDATION SECOND PART*************************************************************** */
-    if (lastNameControl() && firstNameControl()  && addressControl() && cityControl() && zipControl && emailControl() == true && teddyArticle.length>0) {
+    if (lastNameControl() && firstNameControl()  && addressControl() && cityControl() && zipControl() && emailControl() == true && teddyArticle.length>0) {
       localStorage.setItem("formValues", JSON.stringify(formValues));
     
-    /***********************API CALL AND SEND DATA WITH POST REQUEST***************************** */
-    /********************************************************** */
+    /***********************ARRAY CREATION FOR ID TEDDY, API CALL AND SEND DATA WITH POST REQUEST***************************** */
       let products = [];
-
 
       for (let i = 0; i < teddyArticle.length; i++) {
         products.push(teddyArticle[i]._id)
-
-      // console.log("--->",products);
-
       }
-      console.log(products);
-    /*********************************************************** */  
 
+    /*********************************************************** */  
       const order = { contact, products
       }
 
@@ -126,8 +121,7 @@ for (let i = 0; i < btnSendForm.length; i++) {
       })
       .then((response) => response.json())
       .then((json) => {
-        console.log("youhohu",json)
-        localStorage.removeItem('teddyArticle')
+        localStorage.clear()
         window.location.assign(`command_successfull.html?orderId=${json.orderId}`)
 
       })
@@ -137,19 +131,6 @@ for (let i = 0; i < btnSendForm.length; i++) {
       })       
     } 
   });
-  /***************************PUT CONTENT LOCAL STORAGE IN FIELD FORM************************************** */
-    const dataLocalStorage = JSON.parse(localStorage.getItem("formValues"));
-
-    function keepFieldInput(input) {
-      document.querySelector(`#${input}`).value = dataLocalStorage[input];
-    };
-
-    keepFieldInput("lastName")
-    keepFieldInput("firstName")
-    keepFieldInput("address")
-    keepFieldInput("city")
-    keepFieldInput("zip")
-    keepFieldInput("email")
 }
 
 /******************************Display OrderId in command_successfull.html */
