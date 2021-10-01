@@ -1,30 +1,3 @@
-(async function() {
-    //1 collect ID from article
-    const articleId =  getArticleId();
-    //2 call fonction getArticle to collected info in localHost
-    const article = await getArticle(articleId);
-    // article is returned , because await is waiting before hydrateArticle.
-    articleCart(article)
-})()
-
-function getArticleId() {
-    return new URL(window.location.href).searchParams.get("id")
-}//get the id in url
-
-function getArticle(articleId) {
-    return fetch(`http://localhost:3000/api/teddies/${articleId}`)
-        .then(function(httpBodyResponse) {
-            return httpBodyResponse.json()
-        })
-        .then(function(article) {
-            return article
-        })
-        //if article is ok return to begining
-        .catch(function() {
-            alert("Erreur de connexion au serveur")
-        })     
-}
-
 function articleCart(article) {
 
   const sendToCart = document.querySelectorAll("#button-submit");
@@ -108,7 +81,6 @@ if (teddyArticle == null ) {
    /*********************************TOTAL PRICE ARTICLE ******************************/
   
    let totalPriceProduct = [];
-
   const calculateTotalPrice = () => {
 
    for (let item = 0; item < teddyArticle.length; item++) {
@@ -121,3 +93,4 @@ if (teddyArticle == null ) {
    document.querySelector(".totalPriceArticle").textContent = `${totalPrice} €`;
   } 
   calculateTotalPrice ()
+  console.log(totalPriceProduct.reduce(reducer,0));

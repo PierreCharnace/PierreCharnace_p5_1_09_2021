@@ -50,3 +50,31 @@ function hydrateArticle(article) {
     /*********************cartNumbers****************************** */
 }
 
+(async function() {
+    //1 collect ID from article
+    const articleId =  getArticleId();
+    //2 call fonction getArticle to collected info in localHost
+    const article = await getArticle(articleId);
+    // article is returned , because await is waiting before hydrateArticle.
+    articleCart(article)
+})()
+
+function getArticleId() {
+    return new URL(window.location.href).searchParams.get("id")
+}//get the id in url
+
+function getArticle(articleId) {
+    return fetch(`http://localhost:3000/api/teddies/${articleId}`)
+        .then(function(httpBodyResponse) {
+            return httpBodyResponse.json()
+        })
+        .then(function(article) {
+            return article
+        })
+        //if article is ok return to begining
+        .catch(function() {
+            alert("Erreur de connexion au serveur")
+        })     
+}
+
+

@@ -111,9 +111,9 @@ for (let i = 0; i < btnSendForm.length; i++) {
       }
 
     /*********************************************************** */  
+    //const totalPrice = document.querySelector(".totalPriceArticle".value);
       const order = { contact, products
       }
-
       fetch("http://localhost:3000/api/teddies/order", { 
         method: "POST",
         body: JSON.stringify(order),
@@ -121,7 +121,7 @@ for (let i = 0; i < btnSendForm.length; i++) {
       })
       .then((response) => response.json())
       .then((json) => {
-        localStorage.clear()
+        //localStorage.clear()
         window.location.assign(`command_successfull.html?orderId=${json.orderId}`)
 
       })
@@ -132,9 +132,3 @@ for (let i = 0; i < btnSendForm.length; i++) {
     } 
   });
 }
-
-/******************************Display OrderId in command_successfull.html */
-;(() => {
-  const orderId = new URL(location.href).searchParams.get('orderId')
-  document.querySelector("#orderId").textContent = orderId
-})() 
