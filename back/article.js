@@ -46,8 +46,6 @@ function hydrateArticle(article) {
 
     document.querySelector(".main").appendChild(cloneElt)
     //et ensuite la page se construit avec les éléments
-    
-    /*********************cartNumbers****************************** */
 }
 
 (async function() {
@@ -57,13 +55,13 @@ function hydrateArticle(article) {
     const article = await getArticle(articleId);
     // article is returned , because await is waiting before hydrateArticle.
     articleCart(article)
-})()
-
-function getArticleId() {
+  })()
+  
+  function getArticleId() {
     return new URL(window.location.href).searchParams.get("id")
-}//get the id in url
-
-function getArticle(articleId) {
+  }//get the id in url
+  
+  function getArticle(articleId) {
     return fetch(`http://localhost:3000/api/teddies/${articleId}`)
         .then(function(httpBodyResponse) {
             return httpBodyResponse.json()
@@ -75,6 +73,4 @@ function getArticle(articleId) {
         .catch(function() {
             alert("Erreur de connexion au serveur")
         })     
-}
-
-
+  }
