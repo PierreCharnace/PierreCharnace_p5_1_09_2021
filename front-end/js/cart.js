@@ -1,7 +1,7 @@
 function articleCart(article) {
 
   const sendToCart = document.querySelectorAll("#button-submit");
-  let item = sendToCart.length;//loop for addEventListener
+  let item = sendToCart.length;//array for addEventListener
   let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));//translate teddyArticle language JSON to JS
   //PopUpConfirmation for put article in localStorage or not
   const popUpConfirmation = () => {
@@ -12,7 +12,7 @@ Continuez vos achats OK ou payez vos produits ANNULER`)){
       window.location.href = "cart.html"
     }
   }
-  //**********add article to array from LocalStorage and//translate teddyArticle language JS to JSON***************
+  //**********add article to array from LocalStorage and//translate teddyArticle JS to JSON***************
   const addArticleInLocalStorage = () => {
 
     articleRegisteredLocal.push(article);
@@ -20,7 +20,7 @@ Continuez vos achats OK ou payez vos produits ANNULER`)){
   }
   /***************************************ADD AND POP UP********************************************** */
   const addAndPopUp = () => {
-  while(item--)
+  while(item--)//loop for addEventListener
     sendToCart[item].addEventListener("click", (e) => {
       e.preventDefault();
 
