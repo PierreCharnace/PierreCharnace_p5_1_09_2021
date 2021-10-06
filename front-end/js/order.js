@@ -1,5 +1,6 @@
 /******************************Display OrderId in command_successfull.html */
-let priceTotal = localStorage.getItem("totalPrice")//get total price in localStorage
+let priceTotal = JSON.parse(localStorage.getItem("totalPrice"))//get total price in localStorage
+
 ;(() => {
     const orderId = new URL(location.href).searchParams.get('orderId')//get orderId in URL
     document.querySelector("#orderId").textContent = orderId;

@@ -3,7 +3,7 @@ function articleCart(article) {
   const sendToCart = document.querySelectorAll("#button-submit");
   let item = sendToCart.length;//array for addEventListener
   let articleRegisteredLocal = JSON.parse(localStorage.getItem("teddyArticle"));//translate teddyArticle language JSON to JS
-  //PopUpConfirmation for put article in localStorage or not
+  //for alert if the article is in localStorage or not
   const popUpConfirmation = () => {
         if(window.confirm(`L'article ${article.name} a bien été ajouté au panier. 
 Continuez vos achats OK ou payez vos produits ANNULER`)){
