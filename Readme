@@ -1,0 +1,8 @@
+VISUALISER LE PROJET
+
+Afin de visualiser correctement le projet veuillez suivre les étapes ci dessous:
+1- Cloner ou télécharger les dossiers
+2- Ouvrire avec votre logiciel de traitement ( vscode ou autres )
+3- Ouvrire un nouveau terminal
+4- Rentrer : cd back puis node server ( pour lancer l'API)
+
